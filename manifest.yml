@@ -1,0 +1,9 @@
+---
+applications:
+- name: aimvers-webapp
+  memory: 1024M
+  buildpack: python_buildpack
+  command: gunicorn run:app
+  
+  services:
+    - webapp-db

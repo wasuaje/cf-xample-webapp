@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if session.logged_in %}
+
+{% endif %}
+
+<table>
+    <form action="{{ url_for('core_app.index') }}" method="post" class="add-entry">
+    <tr>
+        <td>Last Check:</td>
+        <td>{{ last_update_date }}</td>
+    </tr>
+    <tr>
+        <td>App Count:</td>
+        <td>{{ count }}</td>
+    </tr>
+    <tr>
+        <td>LOB:</td>
+        <td>
+            <select name="lob_search">
+                {% for row in lobs %}
+                {% if row['lob'] == lob_search %}
+                <option id="{{row['lob']}}" selected>{{row['lob']}}</option>
+                {% else %}
+                <option id="{{row['lob']}}">{{row['lob']}}</option>
+                {% endif %}
+                {% else %}
+                <option id="0">No Data</option>
+                {% endfor %}
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Search:</td>
+        <td>
+            <input type="text" size="30" name="text_search" value="{{text_search}}">
+            <input type="submit" value="Go">
+        </td>
+    </tr>
+    </form>
+</table>
+<!--
+<form action="{{ url_for('core_app.index') }}" method="post" class="add-entry">
+    <dl>
+        <dt>Last Check:
+        <dd>{{ last_update_date }}
+        <dt>Pick Lob:
+        <dd><select name="lob_search">
+        {% for row in lobs %}
+            {% if row['lob'] == lob_search %}
+                <option id="{{row['lob']}}" selected>{{row['lob']}}</option>
+            {% else %}
+                <option id="{{row['lob']}}">{{row['lob']}}</option>
+            {% endif %}
+        {% else %}
+            <option id="0">No Data</option>
+        {% endfor %}
+            </select>
+        <dt>App Count:
+        <dd>{{count}}
+        <dt>Search app:
+        <dd><input type="text" size="30" name="text_search" value="{{text_search}}">
+        <dd><input type="submit" value="search">
+    </dl>
+</form>-->
+<hr>
+<div class='div_table'><table border='1'>
+<tr class='table_title'><td>LOB</td><td>Application</td>
+    {{html|safe}}
+</table></div>
+{% endblock %}

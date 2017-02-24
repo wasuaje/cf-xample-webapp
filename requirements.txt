@@ -1,0 +1,7 @@
+# if not virtualenv activated
+#
+flask==0.10.1
+python-dateutil==2.4.2
+pandas==0.17.1
+gunicorn==0.17.2
+PyMySQL
